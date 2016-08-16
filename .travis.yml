@@ -1,6 +1,14 @@
 language: objective-c
-xcode_project: CITest.xcodeproj # path to your xcodeproj folder
-xcode_scheme: CITest
+os: osx
 osx_image: xcode7.3
-xcode_sdk: iphonesimulator9.3
 
+before install:
+    - gem install xcpretty -N --no-ri --no-rdoc
+
+env:
+    matrix:
+        - MATRIX_TARGET="-scheme CITest -sdk iphonesimulator9.3"
+
+script:
+    - set -o pipefail
+    - xcodebuild clean test -project CITest.xcodeproj $MATRIX_TARGET GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES | xcpretty
