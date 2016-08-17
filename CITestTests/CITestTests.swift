@@ -24,6 +24,22 @@ class CITestTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let expectation = expectationWithDescription("Request test")
+        
+        let url = NSURL(string: "http://md5.jsontest.com/?text=example_text")
+        
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) in
+            let result = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            
+            print(result)
+            
+            expectation.fulfill()
+        }
+        
+        task.resume()
+        
+        waitForExpectationsWithTimeout(60, handler: nil)
     }
     
     func testPerformanceExample() {
