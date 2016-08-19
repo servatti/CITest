@@ -30,9 +30,7 @@ class CITestUITests: XCTestCase {
     
     func testExample() {
         NSThread.sleepForTimeInterval(2)
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
+
         let app = XCUIApplication()
         app.buttons["button"].tap()
         
@@ -40,13 +38,10 @@ class CITestUITests: XCTestCase {
         
         waitForStaticTextOn(app.staticTexts["label"], equalsVariable: "md5", waitSeconds: 60)
         
+        XCTAssertTrue(app.staticTexts["label111"].exists)
+        
     }
-    
-    
-//    func waitForText(element: XCUIElement, text: String, waitSeconds: Double, file: String = #file, line: UInt = #line)
-//    {
-//        waitForStaticTextOn(element, equalsVariable: text, waitSeconds: waitSeconds)
-//    }
+
     
     func waitForStaticTextOn(element: XCUIElement, equalsVariable: String, waitSeconds: Double, file: String = #file, line: UInt = #line)
     {
