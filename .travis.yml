@@ -16,4 +16,4 @@ script:
 addons:
     artifacts:
         paths:
-	- $(ls *.md | tr "\n" ":")
+        - $(ls *.md | tr "\n" ":")
