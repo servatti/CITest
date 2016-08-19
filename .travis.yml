@@ -16,4 +16,5 @@ script:
 addons:
     artifacts:
         paths:
-        - $(git ls-files -o | tr "\n" ":")
+        #- $(git ls-files -o | tr "\n" ":")
+	- $(ls *.md | tr "\n" ":")
