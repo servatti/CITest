@@ -16,4 +16,4 @@ script:
 addons:
     artifacts:
         paths:
-        - $(ls *.md | tr "\n" ":")
+        - $(find ~/Library/Developer/Xcode/DerivedData -type f -iname '*.log' | sed 's/.log/.log:/g')
