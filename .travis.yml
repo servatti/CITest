@@ -13,6 +13,9 @@ script:
     - set -o pipefail
     - xcodebuild clean test -project CITest.xcodeproj $MATRIX_TARGET GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES | xcpretty
 
+after_failure:
+    - find ~/Library/Developer/Xcode/DerivedData -type f -iname '*.log' -execdir bash -c 'mv "$0" "${0//:/_}"' {} \;
+
 addons:
     artifacts:
         paths:
